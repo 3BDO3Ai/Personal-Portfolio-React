@@ -10,9 +10,11 @@ import FloatinDiv from "../FloatingDiv/FloatingDiv";
 import Github from "../../img/github.png";
 import LinkedIn from "../../img/linkedin.png";
 import Instagram from "../../img/instagram.png";
+import Whatsapp from "../../img/Whatsapp.png";
 import { themeContext } from "../../Context";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
+const avater = { width: '300px', height: '300px',top :'70px' };
 const Intro = () => {
   // Transition
   const transition = { duration: 2, type: "spring" };
@@ -20,7 +22,10 @@ const Intro = () => {
   // context
   const theme = useContext(themeContext);
   const darkMode = theme.state.darkMode;
-
+  const openInNewTab = (url) => {
+    const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+    if (newWindow) newWindow.opener = null
+}
   return (
     <div className="Intro" id="Intro">
       {/* left name side */}
@@ -28,7 +33,7 @@ const Intro = () => {
         <div className="i-name">
           {/* yahan change hy darkmode ka */}
           <span style={{ color: darkMode ? "white" : "" }}>Hy! I Am</span>
-          <span>Andrew Thomas</span>
+          <span>Abdalrhman Ahmed</span>
           <span>
             Frontend Developer with high level of experience in web designing
             and development, producting the Quality work
@@ -39,16 +44,25 @@ const Intro = () => {
         </Link>
         {/* social icons */}
         <div className="i-icons">
-          <img src={Github} alt="" />
-          <img src={LinkedIn} alt="" />
-          <img src={Instagram} alt="" />
-        </div>
+        <img alt="gallery"
+             src={Github}
+             onClick={() => { openInNewTab('https://github.com/3BDO3Ai') }}/>
+             <img alt="gallery"
+             src={LinkedIn}
+             onClick={() => { openInNewTab('https://www.linkedin.com/in/abdalrhman-ahmed3350/') }}/>
+             <img alt="gallery"
+             src={Instagram}
+             onClick={() => { openInNewTab('https://www.instagram.com/abdalrhman_ayoub/') }}/>
+             <img alt="gallery"
+             src={Whatsapp}
+             onClick={() => { openInNewTab('https://api.whatsapp.com/send/?phone=201024484974&text&type=phone_number&app_absent=0') }}/>
+        </div>  
       </div>
       {/* right image side */}
       <div className="i-right">
         <img src={Vector1} alt="" />
         <img src={Vector2} alt="" />
-        <img src={boy} alt="" />
+        <img style={avater} src={boy} alt="" />
         {/* animation */}
         <motion.img
           initial={{ left: "-36%" }}
